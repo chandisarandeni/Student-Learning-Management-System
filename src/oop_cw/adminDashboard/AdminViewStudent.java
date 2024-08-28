@@ -1,0 +1,582 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package oop_cw.adminDashboard;
+
+import javaswingdev.drawer.Drawer;
+import javaswingdev.drawer.DrawerController;
+import javaswingdev.drawer.DrawerItem;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import oop_cw.Frames.*;
+import oop_cw.OOP_CW;
+import oop_cw.adminDashboard.*;
+
+/**
+ * @author Chandisa
+ */
+public class AdminViewStudent extends javax.swing.JFrame {
+
+    private DrawerController drawer;
+
+    /**
+     * Creates new form AdminViewStudent
+     */
+    public AdminViewStudent() {
+        initComponents();
+
+        lbl_studentID.setVisible(false);
+        lbl_studentName.setVisible(false);
+        lbl_studentAddress.setVisible(false);
+        lbl_studentDOB.setVisible(false);
+        lbl_studentEmail.setVisible(false);
+
+        lbl_showStudentID.setVisible(false);
+        lbl_showStudentName.setVisible(false);
+        lbl_showStudentAddress.setVisible(false);
+        lbl_showStudentDOB.setVisible(false);
+        lbl_showStudentEmail.setVisible(false);
+
+        drawer = Drawer.newDrawer(this)
+                .header(new Header())
+                .separator(2, new Color(173, 173, 173))
+                .background(new Color(65, 65, 65))
+                .backgroundTransparent(0.3f)
+                .drawerBackground(Color.decode("#FFFFFF"))
+                .addChild(createDrawerItem("Dashboard", "dashboard 1.1.png"))
+                .addChild(createDrawerItem("Students", "studentIcon.png"))
+                .addChild(createDrawerItem("Lecturer", "LecturerIcon.png"))
+                .addChild(createDrawerItem("Examination", "exam 1.2.png"))
+                .addFooter(createDrawerItem("Logout", "power 1.1.png"))
+                .build();
+    }
+
+    private DrawerItem createDrawerItem(String title, String iconPath) {
+        DrawerItem item = new DrawerItem(title)
+                .icon(new ImageIcon(getClass().getResource(iconPath)))
+                .build();
+
+        // Add an action listener to handle item selection
+        item.addActionListener(e -> handleDrawerItemSelection(title));
+
+        return item;
+    }
+
+    private void handleDrawerItemSelection(String title) {
+        switch (title) {
+            case "Dashboard":
+
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                    AdminDashboard adminDashboard = new AdminDashboard();
+                    adminDashboard.setVisible(rootPaneCheckingEnabled);
+                    this.setVisible(false);
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
+                break;
+            case "Students":
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                    AdminViewStudent adminViewStudent = new AdminViewStudent();
+                    adminViewStudent.setVisible(rootPaneCheckingEnabled);
+                    this.setVisible(false);
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                break;
+            case "Lecturer":
+                // Show the Lecturer screen
+                AdminViewLecturer adminViewLecturer = new AdminViewLecturer();
+                adminViewLecturer.setVisible(true);
+                this.setVisible(false);
+                break;
+            case "Examination":
+                // Show the Examination screen
+                AdminViewExamination adminViewExamination = new AdminViewExamination();
+                adminViewExamination.setVisible(true);
+                this.setVisible(false);
+                break;
+            case "Logout":
+                Home home = new Home();
+                home.setVisible(true);
+                this.setVisible(false);
+                // Handle logout
+                break;
+            default:
+                // Handle unknown cases
+                break;
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel8 = new javax.swing.JLabel();
+        HomeMenu = new javax.swing.JLabel();
+        lbl_AddStudent = new javax.swing.JLabel();
+        btn_deleteStudent = new javax.swing.JLabel();
+        txt_studentID = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        lbl_studentID = new javax.swing.JLabel();
+        lbl_studentName = new javax.swing.JLabel();
+        lbl_studentAddress = new javax.swing.JLabel();
+        lbl_studentDOB = new javax.swing.JLabel();
+        lbl_studentEmail = new javax.swing.JLabel();
+        lbl_showStudentID = new javax.swing.JLabel();
+        lbl_showStudentName = new javax.swing.JLabel();
+        lbl_showStudentAddress = new javax.swing.JLabel();
+        lbl_showStudentDOB = new javax.swing.JLabel();
+        lbl_showStudentEmail = new javax.swing.JLabel();
+        btn_Search = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel8.setText("Student Activities");
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        HomeMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oop_cw/Images/menu.png"))); // NOI18N
+        HomeMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        HomeMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeMenuMouseClicked(evt);
+            }
+        });
+
+        lbl_AddStudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oop_cw/adminDashboard/add.png"))); // NOI18N
+        lbl_AddStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_AddStudentMouseClicked(evt);
+            }
+        });
+
+        btn_deleteStudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oop_cw/adminDashboard/delete.png"))); // NOI18N
+        btn_deleteStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_deleteStudentMouseClicked(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Search Student :");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_studentID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_studentID.setText("Studdent ID    :  ");
+        lbl_studentID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_studentName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_studentName.setText("Name              :  ");
+        lbl_studentName.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_studentAddress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_studentAddress.setText("Address          :  ");
+        lbl_studentAddress.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_studentDOB.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_studentDOB.setText("DOB                :  ");
+        lbl_studentDOB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_studentEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_studentEmail.setText("Email              :  ");
+        lbl_studentEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_showStudentID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_showStudentID.setText("Sample Data");
+        lbl_showStudentID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_showStudentName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_showStudentName.setText("Sample Data");
+        lbl_showStudentName.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_showStudentAddress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_showStudentAddress.setText("Sample Data");
+        lbl_showStudentAddress.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_showStudentDOB.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_showStudentDOB.setText("Sample Data");
+        lbl_showStudentDOB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_showStudentEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_showStudentEmail.setText("Sample Data");
+        lbl_showStudentEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        btn_Search.setBackground(new java.awt.Color(102, 0, 153));
+        btn_Search.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_Search.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Search.setText("Search");
+        btn_Search.setBorder(null);
+        btn_Search.setFocusPainted(false);
+        btn_Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SearchActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(HomeMenu)
+                .addContainerGap(831, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_studentID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_showStudentID))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_studentName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_showStudentName))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_studentAddress)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_showStudentAddress))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_studentDOB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_showStudentDOB))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_studentEmail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_showStudentEmail))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txt_studentID, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82)
+                                .addComponent(lbl_AddStudent)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_deleteStudent)))))
+                .addGap(70, 70, 70))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(HomeMenu)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_deleteStudent)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lbl_AddStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_studentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_studentID)
+                    .addComponent(lbl_showStudentID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_studentName)
+                    .addComponent(lbl_showStudentName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_studentAddress)
+                    .addComponent(lbl_showStudentAddress))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_studentDOB)
+                    .addComponent(lbl_showStudentDOB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_studentEmail)
+                    .addComponent(lbl_showStudentEmail))
+                .addContainerGap(219, Short.MAX_VALUE))
+        );
+
+        lbl_studentID.getAccessibleContext().setAccessibleName("lbl_studentName");
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void HomeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMenuMouseClicked
+        // TODO add your handling code here:
+        if (drawer.isShow()) {
+            drawer.hide();
+            Timer timer = new Timer(1000, e -> drawer.hide());
+        } else {
+            drawer.show();
+            Timer timer = new Timer(1000, e -> drawer.hide());
+        }
+    }//GEN-LAST:event_HomeMenuMouseClicked
+
+    //Register Student
+    private void lbl_AddStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_AddStudentMouseClicked
+        // TODO add your handling code here:
+        AdminRegisterStudent adminRegisterStudent = new AdminRegisterStudent();
+        adminRegisterStudent.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_lbl_AddStudentMouseClicked
+
+    //Remove Student
+    private void btn_deleteStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_deleteStudentMouseClicked
+        // TODO add your handling code here:
+        // Get the student ID from the corresponding label or text field
+        String studentID = lbl_showStudentID.getText();
+
+        // Show a confirmation dialog before deleting the student
+        int response = JOptionPane.showConfirmDialog(this,
+                "Do you want to delete this student?",
+                "Confirm Delete",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE);
+
+        // If the user confirms the deletion
+        if (response == JOptionPane.YES_OPTION) {
+            // Perform the deletion in the database
+            try (Connection conn = connect(); PreparedStatement stmt = conn.prepareStatement("DELETE FROM Student WHERE studentID = ?")) {
+
+                // Set the student ID in the SQL query
+                stmt.setString(1, studentID);
+
+                // Execute the delete query
+                int rowsAffected = stmt.executeUpdate();
+
+                // Check if the deletion was successful
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(this, "Student deleted successfully.");
+                    // Clear the labels or refresh the student list
+                    lbl_showStudentID.setText("");
+                    lbl_showStudentName.setText("");
+                    lbl_showStudentAddress.setText("");
+                    lbl_showStudentDOB.setText("");
+                    lbl_showStudentEmail.setText("");
+                    lbl_studentID.setVisible(false);
+                    lbl_studentName.setVisible(false);
+                    lbl_studentAddress.setVisible(false);
+                    lbl_studentDOB.setVisible(false);
+                    lbl_studentEmail.setVisible(false);
+                    lbl_showStudentID.setVisible(false);
+                    lbl_showStudentName.setVisible(false);
+                    lbl_showStudentAddress.setVisible(false);
+                    lbl_showStudentDOB.setVisible(false);
+                    lbl_showStudentEmail.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Student ID not found.");
+                }
+
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this, "Error deleting student: " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btn_deleteStudentMouseClicked
+
+    private Connection connect() throws SQLException {
+        String url = "jdbc:sqlserver://DESKTOP-3RD2OGB;Database=OOP_CW;integratedSecurity=true;TrustServerCertificate=true;";
+        return DriverManager.getConnection(url);
+    }
+
+    //Search button
+    private void btn_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SearchActionPerformed
+        // TODO add your handling code here:
+
+        // Set the x-coordinate for alignment
+        int alignmentX = 174;
+
+        // Assuming all labels are being positioned with similar y-coordinates and widths
+        int yPosition = 50; // Replace with the actual y-coordinate you want to use
+        int labelWidth = 200; // Replace with the actual width of your labels
+        int labelHeight = 30; // Replace with the actual height of your labels
+
+        lbl_studentID.setVisible(true);
+        lbl_studentID.setBounds(alignmentX, yPosition, labelWidth, labelHeight);
+
+        lbl_studentName.setVisible(true);
+        lbl_studentName.setBounds(alignmentX, yPosition + 40, labelWidth, labelHeight);
+
+        lbl_studentAddress.setVisible(true);
+        lbl_studentAddress.setBounds(alignmentX, yPosition + 80, labelWidth, labelHeight);
+
+        lbl_studentDOB.setVisible(true);
+        lbl_studentDOB.setBounds(alignmentX, yPosition + 120, labelWidth, labelHeight);
+
+        lbl_studentEmail.setVisible(true);
+        lbl_studentEmail.setBounds(alignmentX, yPosition + 160, labelWidth, labelHeight);
+
+        // Assume lbl_showStudentID is already positioned correctly
+        int lblShowStudentID_X = lbl_showStudentID.getX();
+        int lblShowStudentID_Y = lbl_showStudentID.getY();
+
+        // Set visibility and position for each label
+        lbl_showStudentID.setVisible(true);
+        lbl_showStudentID.setBounds(lblShowStudentID_X, lblShowStudentID_Y, labelWidth, labelHeight);
+
+        lbl_showStudentName.setVisible(true);
+        lbl_showStudentName.setBounds(lblShowStudentID_X + 30, lblShowStudentID_Y, labelWidth, labelHeight);
+
+        lbl_showStudentAddress.setVisible(true);
+        lbl_showStudentAddress.setBounds(lblShowStudentID_X + 30, lblShowStudentID_Y + labelHeight + 10, labelWidth, labelHeight);
+
+        lbl_showStudentDOB.setVisible(true);
+        lbl_showStudentDOB.setBounds(lblShowStudentID_X + 30, lblShowStudentID_Y + 2 * (labelHeight + 10), labelWidth, labelHeight);
+
+        lbl_showStudentEmail.setVisible(true);
+        lbl_showStudentEmail.setBounds(lblShowStudentID_X + 30, lblShowStudentID_Y + 3 * (labelHeight + 10), labelWidth, labelHeight);
+
+        lbl_studentID.setVisible(true);
+        lbl_studentName.setVisible(true);
+        lbl_studentAddress.setVisible(true);
+        lbl_studentDOB.setVisible(true);
+        lbl_studentEmail.setVisible(true);
+
+        // Set visibility and position for each label
+        lbl_showStudentID.setVisible(true);
+        lbl_showStudentID.setBounds(lblShowStudentID_X, lblShowStudentID_Y, labelWidth, labelHeight);
+
+        lbl_showStudentName.setVisible(true);
+        lbl_showStudentName.setBounds(lblShowStudentID_X + 30, lblShowStudentID_Y + labelHeight + 20, labelWidth, labelHeight);
+
+        lbl_showStudentAddress.setVisible(true);
+        lbl_showStudentAddress.setBounds(lblShowStudentID_X + 30, lbl_showStudentName.getY() + labelHeight + 20, labelWidth, labelHeight);
+
+        lbl_showStudentDOB.setVisible(true);
+        lbl_showStudentDOB.setBounds(lblShowStudentID_X + 30, lbl_showStudentAddress.getY() + labelHeight + 20, labelWidth, labelHeight);
+
+        lbl_showStudentEmail.setVisible(true);
+        lbl_showStudentEmail.setBounds(lblShowStudentID_X + 30, lbl_showStudentDOB.getY() + labelHeight + 20, labelWidth, labelHeight);
+
+        String studentID = txt_studentID.getText().trim();
+        if (studentID.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student ID cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String query = "SELECT * FROM Student WHERE studentID = ?";
+
+        try (Connection connection = connect(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, studentID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                lbl_showStudentID.setText(resultSet.getString("studentID"));
+                lbl_showStudentName.setText(resultSet.getString("studentName"));
+                lbl_showStudentAddress.setText(resultSet.getString("studentAddress"));
+                lbl_showStudentDOB.setText(resultSet.getString("DOB"));
+                lbl_showStudentEmail.setText(resultSet.getString("studentEmail"));
+
+                lbl_showStudentID.setVisible(true);
+                lbl_showStudentName.setVisible(true);
+                lbl_showStudentAddress.setVisible(true);
+                lbl_showStudentDOB.setVisible(true);
+                lbl_showStudentEmail.setVisible(true);
+            } else {
+                lbl_studentID.setVisible(false);
+                lbl_studentName.setVisible(false);
+                lbl_studentAddress.setVisible(false);
+                lbl_studentDOB.setVisible(false);
+                lbl_studentEmail.setVisible(false);
+
+                lbl_showStudentID.setVisible(false);
+                lbl_showStudentName.setVisible(false);
+                lbl_showStudentAddress.setVisible(false);
+                lbl_showStudentDOB.setVisible(false);
+                lbl_showStudentEmail.setVisible(false);
+                
+                JOptionPane.showMessageDialog(this, "No student found with ID " + studentID, "Error", JOptionPane.ERROR_MESSAGE);
+                clearStudentDetails();
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error retrieving student details: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_SearchActionPerformed
+
+    private void clearStudentDetails() {
+        lbl_showStudentID.setText("");
+        lbl_showStudentName.setText("");
+        lbl_showStudentAddress.setText("");
+        lbl_showStudentDOB.setText("");
+        lbl_showStudentEmail.setText("");
+    }
+
+    public static void main(String args[]) {
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AdminViewStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AdminViewStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AdminViewStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AdminViewStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AdminViewStudent().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel HomeMenu;
+    private javax.swing.JButton btn_Search;
+    private javax.swing.JLabel btn_deleteStudent;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lbl_AddStudent;
+    private javax.swing.JLabel lbl_showStudentAddress;
+    private javax.swing.JLabel lbl_showStudentDOB;
+    private javax.swing.JLabel lbl_showStudentEmail;
+    private javax.swing.JLabel lbl_showStudentID;
+    private javax.swing.JLabel lbl_showStudentName;
+    private javax.swing.JLabel lbl_studentAddress;
+    private javax.swing.JLabel lbl_studentDOB;
+    private javax.swing.JLabel lbl_studentEmail;
+    private javax.swing.JLabel lbl_studentID;
+    private javax.swing.JLabel lbl_studentName;
+    private javax.swing.JTextField txt_studentID;
+    // End of variables declaration//GEN-END:variables
+}

@@ -1,0 +1,445 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package oop_cw.adminDashboard;
+
+/**
+ *
+ * @author Chandisa
+ */
+import javaswingdev.drawer.Drawer;
+import javaswingdev.drawer.DrawerController;
+import javaswingdev.drawer.DrawerItem;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.*;
+
+import oop_cw.Frames.*;
+import oop_cw.OOP_CW;
+import oop_cw.adminDashboard.*;
+
+/**
+ *
+ * @author Chandisa
+ */
+public class AdminRemoveLecturer extends javax.swing.JFrame {
+    
+    private DrawerController drawer;
+
+    /**
+     * Creates new form AdminViewStudent
+     */
+    public AdminRemoveLecturer() {
+        initComponents();
+        
+        lbl_lecturerName.setVisible(false);
+        lbl_lecturerID.setVisible(false);
+        lbl_lecturerSubject.setVisible(false);
+        lbl_lecturerDepartment.setVisible(false);
+        lbl_lecturerEmail.setVisible(false);
+        
+        lbl_showLecturerName.setVisible(false);
+        lbl_showLecturerID.setVisible(false);
+        lbl_showLecturerSubject.setVisible(false);
+        lbl_showLecturerDepartment.setVisible(false);
+        lbl_showLecturerEmail.setVisible(false);
+        
+        btn_Remove.setVisible(false);
+        btn_Cancel.setVisible(false);
+        
+        drawer = Drawer.newDrawer(this)
+                .header(new Header())
+                .separator(2, new Color(173, 173, 173))
+                .background(new Color(65, 65, 65))
+                .backgroundTransparent(0.3f)
+                .drawerBackground(Color.decode("#FFFFFF"))
+                .addChild(createDrawerItem("Dashboard", "dashboard 1.1.png"))
+                .addChild(createDrawerItem("Students", "studentIcon.png"))
+                .addChild(createDrawerItem("Lecturer", "LecturerIcon.png"))
+                .addChild(createDrawerItem("Examination", "exam 1.2.png"))
+                .addFooter(createDrawerItem("Logout", "power 1.1.png"))
+                .build();
+    }
+    
+    private DrawerItem createDrawerItem(String title, String iconPath) {
+    DrawerItem item = new DrawerItem(title)
+            .icon(new ImageIcon(getClass().getResource(iconPath)))
+            .build();
+
+    // Add an action listener to handle item selection
+    item.addActionListener(e -> handleDrawerItemSelection(title));
+
+    return item;
+}
+
+
+    private void handleDrawerItemSelection(String title) {
+        switch (title) {
+            case "Dashboard":
+
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                    AdminDashboard adminDashboard = new AdminDashboard();
+                    adminDashboard.setVisible(rootPaneCheckingEnabled);
+                    this.setVisible(false);
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                // Already on the Dashboard, do nothing or handle accordingly
+                break;
+            case "Students":
+                if (drawer.isShow()) {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.hide();
+                    AdminViewStudent adminViewStudent = new AdminViewStudent();
+                    adminViewStudent.setVisible(rootPaneCheckingEnabled);
+                    this.setVisible(false);
+                } else {
+                    Timer timer = new Timer(300, e -> drawer.hide());
+                    drawer.show();
+                }
+                break;
+            case "Lecturer":
+                // Show the Lecturer screen
+                //new LecturerScreen().setVisible(true);
+                AdminViewLecturer adminViewLecturer = new AdminViewLecturer();
+                adminViewLecturer.setVisible(true);
+                this.setVisible(false); // Hide the current frame
+                break;
+            case "Examination":
+                // Show the Examination screen
+                AdminViewExamination adminViewExamination = new AdminViewExamination();
+                adminViewExamination.setVisible(true);
+                this.setVisible(false); // Hide the current frame
+                break;
+            case "Logout":
+                Home home = new Home();
+                home.setVisible(true);
+                this.setVisible(false);
+                // Handle logout
+                //handleLogout();
+                break;
+            default:
+                // Handle unknown cases
+                break;
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        HomeMenu = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lbl_AddStudent1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lbl_lecturerDepartment = new javax.swing.JLabel();
+        lbl_showLecturerEmail = new javax.swing.JLabel();
+        lbl_lecturerID = new javax.swing.JLabel();
+        lbl_lecturerEmail = new javax.swing.JLabel();
+        lbl_lecturerName = new javax.swing.JLabel();
+        lbl_showLecturerID = new javax.swing.JLabel();
+        lbl_lecturerSubject = new javax.swing.JLabel();
+        lbl_showLecturerName = new javax.swing.JLabel();
+        AdminLogin4 = new javax.swing.JButton();
+        lbl_showLecturerSubject = new javax.swing.JLabel();
+        btn_Remove = new javax.swing.JButton();
+        txt_SearchStudent = new javax.swing.JTextField();
+        btn_Cancel = new javax.swing.JButton();
+        lbl_showLecturerDepartment = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        HomeMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oop_cw/Images/menu.png"))); // NOI18N
+        HomeMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        HomeMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeMenuMouseClicked(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel8.setText("Remove Lecturer");
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Search Lecturer :");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_AddStudent1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oop_cw/adminDashboard/arrow.png"))); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setText("Enter Lecturer ID to View Lecturer Details");
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_lecturerDepartment.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_lecturerDepartment.setText("Department  :  ");
+        lbl_lecturerDepartment.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_showLecturerEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_showLecturerEmail.setText("Sample Data");
+        lbl_showLecturerEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_lecturerID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_lecturerID.setText("Lecturer ID  :  ");
+        lbl_lecturerID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_lecturerEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_lecturerEmail.setText("Email           :  ");
+        lbl_lecturerEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_lecturerName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_lecturerName.setText("Name           :  ");
+        lbl_lecturerName.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_showLecturerID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_showLecturerID.setText("Sample Data");
+        lbl_showLecturerID.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_lecturerSubject.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_lecturerSubject.setText("Subject       :  ");
+        lbl_lecturerSubject.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbl_showLecturerName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_showLecturerName.setText("Sample Data");
+        lbl_showLecturerName.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        AdminLogin4.setBackground(new java.awt.Color(102, 0, 153));
+        AdminLogin4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        AdminLogin4.setForeground(new java.awt.Color(255, 255, 255));
+        AdminLogin4.setText("Search");
+        AdminLogin4.setBorder(null);
+        AdminLogin4.setFocusPainted(false);
+        AdminLogin4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdminLogin4ActionPerformed(evt);
+            }
+        });
+
+        lbl_showLecturerSubject.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_showLecturerSubject.setText("Sample Data");
+        lbl_showLecturerSubject.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        btn_Remove.setBackground(new java.awt.Color(102, 0, 153));
+        btn_Remove.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_Remove.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Remove.setText("Remove");
+        btn_Remove.setBorder(null);
+        btn_Remove.setFocusPainted(false);
+        btn_Remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RemoveActionPerformed(evt);
+            }
+        });
+
+        btn_Cancel.setBackground(new java.awt.Color(102, 0, 153));
+        btn_Cancel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_Cancel.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Cancel.setText("Cancel");
+        btn_Cancel.setBorder(null);
+        btn_Cancel.setFocusPainted(false);
+        btn_Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CancelActionPerformed(evt);
+            }
+        });
+
+        lbl_showLecturerDepartment.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_showLecturerDepartment.setText("Sample Data");
+        lbl_showLecturerDepartment.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(HomeMenu))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(318, 318, 318)
+                        .addComponent(jLabel8))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lbl_lecturerDepartment)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lbl_showLecturerDepartment))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lbl_lecturerID)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lbl_showLecturerID))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lbl_lecturerName)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lbl_showLecturerName))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lbl_lecturerSubject)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lbl_showLecturerSubject))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txt_SearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(AdminLogin4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lbl_lecturerEmail)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lbl_showLecturerEmail))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(142, 142, 142)
+                                    .addComponent(lbl_AddStudent1)
+                                    .addGap(184, 184, 184)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btn_Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel7))
+                                .addGap(74, 74, 74)))))
+                .addContainerGap(227, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(HomeMenu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_SearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AdminLogin4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_lecturerID)
+                    .addComponent(lbl_showLecturerID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_lecturerName)
+                    .addComponent(lbl_showLecturerName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_lecturerSubject)
+                    .addComponent(lbl_showLecturerSubject))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 17, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_lecturerDepartment)
+                    .addComponent(lbl_showLecturerDepartment))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_lecturerEmail)
+                    .addComponent(lbl_showLecturerEmail))
+                .addGap(3, 3, 3)
+                .addComponent(lbl_AddStudent1, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(70, 70, 70))
+        );
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void HomeMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMenuMouseClicked
+        // TODO add your handling code here:
+        if (drawer.isShow()) {
+            drawer.hide();
+            Timer timer = new Timer(1000, e -> drawer.hide());
+        } else {
+            drawer.show();
+            Timer timer = new Timer(1000, e -> drawer.hide());
+        }
+    }//GEN-LAST:event_HomeMenuMouseClicked
+
+    private void AdminLogin4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminLogin4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AdminLogin4ActionPerformed
+
+    private void btn_RemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RemoveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_RemoveActionPerformed
+
+    private void btn_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_CancelActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AdminRemoveLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AdminRemoveLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AdminRemoveLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AdminRemoveLecturer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AdminRemoveLecturer().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AdminLogin4;
+    private javax.swing.JLabel HomeMenu;
+    private javax.swing.JButton btn_Cancel;
+    private javax.swing.JButton btn_Remove;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lbl_AddStudent1;
+    private javax.swing.JLabel lbl_lecturerDepartment;
+    private javax.swing.JLabel lbl_lecturerEmail;
+    private javax.swing.JLabel lbl_lecturerID;
+    private javax.swing.JLabel lbl_lecturerName;
+    private javax.swing.JLabel lbl_lecturerSubject;
+    private javax.swing.JLabel lbl_showLecturerDepartment;
+    private javax.swing.JLabel lbl_showLecturerEmail;
+    private javax.swing.JLabel lbl_showLecturerID;
+    private javax.swing.JLabel lbl_showLecturerName;
+    private javax.swing.JLabel lbl_showLecturerSubject;
+    private javax.swing.JTextField txt_SearchStudent;
+    // End of variables declaration//GEN-END:variables
+}
