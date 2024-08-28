@@ -8,23 +8,16 @@ import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import oop_cw.Frames.*;
-import oop_cw.OOP_CW;
-import oop_cw.adminDashboard.*;
 
-/**
+/*
  * @author Chandisa
  */
 public class AdminViewStudent extends javax.swing.JFrame {
@@ -414,9 +407,9 @@ public class AdminViewStudent extends javax.swing.JFrame {
         int alignmentX = 174;
 
         // Assuming all labels are being positioned with similar y-coordinates and widths
-        int yPosition = 50; // Replace with the actual y-coordinate you want to use
-        int labelWidth = 200; // Replace with the actual width of your labels
-        int labelHeight = 30; // Replace with the actual height of your labels
+        int yPosition = 50;
+        int labelWidth = 200;
+        int labelHeight = 30;
 
         lbl_studentID.setVisible(true);
         lbl_studentID.setBounds(alignmentX, yPosition, labelWidth, labelHeight);
@@ -477,6 +470,17 @@ public class AdminViewStudent extends javax.swing.JFrame {
 
         String studentID = txt_studentID.getText().trim();
         if (studentID.isEmpty()) {
+            lbl_studentID.setVisible(false);
+            lbl_studentName.setVisible(false);
+            lbl_studentAddress.setVisible(false);
+            lbl_studentDOB.setVisible(false);
+            lbl_studentEmail.setVisible(false);
+
+            lbl_showStudentID.setVisible(false);
+            lbl_showStudentName.setVisible(false);
+            lbl_showStudentAddress.setVisible(false);
+            lbl_showStudentDOB.setVisible(false);
+            lbl_showStudentEmail.setVisible(false);
             JOptionPane.showMessageDialog(this, "Student ID cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -512,7 +516,7 @@ public class AdminViewStudent extends javax.swing.JFrame {
                 lbl_showStudentAddress.setVisible(false);
                 lbl_showStudentDOB.setVisible(false);
                 lbl_showStudentEmail.setVisible(false);
-                
+
                 JOptionPane.showMessageDialog(this, "No student found with ID " + studentID, "Error", JOptionPane.ERROR_MESSAGE);
                 clearStudentDetails();
             }

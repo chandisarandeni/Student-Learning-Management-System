@@ -8,7 +8,6 @@ import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,11 +17,9 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 import oop_cw.Frames.*;
-import oop_cw.OOP_CW;
 import oop_cw.adminDashboard.*;
 
-/**
- *
+/*
  * @author Chandisa
  */
 public class LectureUploadResults extends javax.swing.JFrame {
@@ -91,14 +88,13 @@ public class LectureUploadResults extends javax.swing.JFrame {
                 // Show the Examination screen
                 LectureUploadResults lectureUploadResults = new LectureUploadResults();
                 lectureUploadResults.setVisible(true);
-                this.setVisible(false); // Hide the current frame
+                this.setVisible(false);
                 break;
             case "Logout":
                 Home home = new Home();
                 home.setVisible(true);
                 this.setVisible(false);
                 // Handle logout
-                //handleLogout();
                 break;
             default:
                 // Handle unknown cases

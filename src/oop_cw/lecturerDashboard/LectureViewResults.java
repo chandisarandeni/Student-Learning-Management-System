@@ -4,8 +4,7 @@
  */
 package oop_cw.lecturerDashboard;
 
-/**
- *
+/*
  * @author Chandisa
  */
 public class LectureViewResults extends javax.swing.JFrame {
@@ -16,7 +15,7 @@ public class LectureViewResults extends javax.swing.JFrame {
     public LectureViewResults() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

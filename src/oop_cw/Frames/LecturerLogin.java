@@ -214,8 +214,6 @@ public class LecturerLogin extends javax.swing.JFrame {
 
     //Lecturer Dashboard Login
     private void AdminLogin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminLogin2ActionPerformed
-        // TODO add your handling code here:
-
         // Database connection string
         String connectionString = "jdbc:sqlserver://DESKTOP-3RD2OGB;Database=OOP_CW;integratedSecurity=true;TrustServerCertificate=true;";
 

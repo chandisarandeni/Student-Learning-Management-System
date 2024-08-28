@@ -8,13 +8,8 @@ import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,8 +17,6 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 
 import oop_cw.Frames.*;
-import oop_cw.OOP_CW;
-import oop_cw.adminDashboard.*;
 
 /**
  *
@@ -106,23 +99,21 @@ public class AdminViewLecturer extends javax.swing.JFrame {
                 break;
             case "Lecturer":
                 // Show the Lecturer screen
-                //new LecturerScreen().setVisible(true);
                 AdminViewLecturer adminViewLecturer = new AdminViewLecturer();
                 adminViewLecturer.setVisible(true);
-                this.setVisible(false); // Hide the current frame
+                this.setVisible(false);
                 break;
             case "Examination":
                 // Show the Examination screen
                 AdminViewExamination adminViewExamination = new AdminViewExamination();
                 adminViewExamination.setVisible(true);
-                this.setVisible(false); // Hide the current frame
+                this.setVisible(false);
                 break;
             case "Logout":
                 Home home = new Home();
                 home.setVisible(true);
                 this.setVisible(false);
                 // Handle logout
-                //handleLogout();
                 break;
             default:
                 // Handle unknown cases
@@ -367,12 +358,12 @@ public class AdminViewLecturer extends javax.swing.JFrame {
     private void AdminLogin4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminLogin4ActionPerformed
         // TODO: Add your handling code here
         // Set the x-coordinate for alignment
-        int alignmentX = 50; // Replace 50 with the desired x-coordinate for positioning the labels
+        int alignmentX = 50;
 
-// Assuming all labels are being positioned with similar y-coordinates and widths
-        int yPosition = 50; // Replace with the actual y-coordinate you want to use
-        int labelWidth = 200; // Replace with the actual width of your labels
-        int labelHeight = 30; // Replace with the actual height of your labels
+        // Assuming all labels are being positioned with similar y-coordinates and widths
+        int yPosition = 50;
+        int labelWidth = 200;
+        int labelHeight = 30;
 
         lbl_lecturerID.setVisible(true);
         lbl_lecturerID.setBounds(alignmentX, yPosition, labelWidth, labelHeight);
@@ -389,11 +380,11 @@ public class AdminViewLecturer extends javax.swing.JFrame {
         lbl_lecturerEmail.setVisible(true);
         lbl_lecturerEmail.setBounds(alignmentX, yPosition + 160, labelWidth, labelHeight);
 
-// Assume lbl_showLecturerID is already positioned correctly
+        // Assume lbl_showLecturerID is already positioned correctly
         int lblShowLecturerID_X = lbl_showLecturerID.getX();
         int lblShowLecturerID_Y = lbl_showLecturerID.getY();
 
-// Set visibility and position for each label
+        // Set visibility and position for each label
         lbl_showLecturerID.setVisible(true);
         lbl_showLecturerID.setBounds(lblShowLecturerID_X, lblShowLecturerID_Y, labelWidth, labelHeight);
 
@@ -437,6 +428,18 @@ public class AdminViewLecturer extends javax.swing.JFrame {
                 lbl_showLecturerDepartment.setVisible(true);
                 lbl_showLecturerEmail.setVisible(true);
             } else {
+
+                lbl_lecturerID.setVisible(false);
+                lbl_lecturerName.setVisible(false);
+                lbl_lecturerSubject.setVisible(false);
+                lbl_lecturerDepartment.setVisible(false);
+                lbl_lecturerEmail.setVisible(false);
+
+                lbl_showLecturerID.setVisible(false);
+                lbl_showLecturerName.setVisible(false);
+                lbl_showLecturerSubject.setVisible(false);
+                lbl_showLecturerDepartment.setVisible(false);
+                lbl_showLecturerEmail.setVisible(false);
                 JOptionPane.showMessageDialog(this, "No lecturer found with ID " + lecturerID, "Error", JOptionPane.ERROR_MESSAGE);
                 clearLecturerDetails();
             }
@@ -465,7 +468,7 @@ public class AdminViewLecturer extends javax.swing.JFrame {
 
     private void lbl_deleteLecturerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_deleteLecturerMouseClicked
         // TODO add your handling code here:
-        String lecturerID = txt_SearchLecturer.getText(); // Get the lecturer ID from the text field
+        String lecturerID = txt_SearchLecturer.getText();
 
         int response = JOptionPane.showConfirmDialog(null,
                 "Do you want to delete this lecturer?",
@@ -476,7 +479,7 @@ public class AdminViewLecturer extends javax.swing.JFrame {
         if (response == JOptionPane.YES_OPTION) {
             // Proceed with the deletion
             try {
-                Connection conn = connect(); // Ensure your connect() method is correct
+                Connection conn = connect();
                 String query = "DELETE FROM Lecturer WHERE lecturerID = ?";
                 PreparedStatement pstmt = conn.prepareStatement(query);
                 pstmt.setString(1, lecturerID);
@@ -494,7 +497,7 @@ public class AdminViewLecturer extends javax.swing.JFrame {
                     lbl_showLecturerSubject.setVisible(false);
                     lbl_showLecturerDepartment.setVisible(false);
                     lbl_showLecturerEmail.setVisible(false);
-                    
+
                     JOptionPane.showMessageDialog(null, "Lecturer deleted successfully.");
                 } else {
                     lbl_lecturerID.setVisible(false);

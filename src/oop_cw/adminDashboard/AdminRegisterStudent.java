@@ -8,21 +8,14 @@ import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.*;
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException; 
+import java.sql.SQLException;
 
 import oop_cw.Frames.*;
-import oop_cw.OOP_CW;
-import oop_cw.adminDashboard.*;
 
 /**
  * @author Chandisa
@@ -101,7 +94,6 @@ public class AdminRegisterStudent extends javax.swing.JFrame {
                 Home home = new Home();
                 home.setVisible(true);
                 this.setVisible(false);
-                // Handle logout
                 break;
             default:
                 // Handle unknown cases
@@ -370,7 +362,7 @@ public class AdminRegisterStudent extends javax.swing.JFrame {
     //Register Button
     private void btn_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterActionPerformed
         // TODO add your handling code here:
-        
+
         //Define labels
         String studentID = txt_studentID.getText();
         String studentName = txt_studentName.getText();
@@ -414,8 +406,8 @@ public class AdminRegisterStudent extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-        
-        
+
+
     }//GEN-LAST:event_btn_RegisterActionPerformed
 
     //Cancel Button

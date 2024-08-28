@@ -8,25 +8,18 @@ import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.Component;
-import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.SwingConstants;
 
 import oop_cw.Frames.*;
-import oop_cw.OOP_CW;
-import oop_cw.adminDashboard.*;
 
 /**
  *
@@ -114,23 +107,20 @@ public class AdminViewExamination extends javax.swing.JFrame {
                 break;
             case "Lecturer":
                 // Show the Lecturer screen
-                //new LecturerScreen().setVisible(true);
                 AdminViewLecturer adminViewLecturer = new AdminViewLecturer();
                 adminViewLecturer.setVisible(true);
-                this.setVisible(false); // Hide the current frame
+                this.setVisible(false);
                 break;
             case "Examination":
                 // Show the Examination screen
                 AdminViewExamination adminViewExamination = new AdminViewExamination();
                 adminViewExamination.setVisible(true);
-                this.setVisible(false); // Hide the current frame
+                this.setVisible(false);
                 break;
             case "Logout":
                 Home home = new Home();
                 home.setVisible(true);
                 this.setVisible(false);
-                // Handle logout
-                //handleLogout();
                 break;
             default:
                 // Handle unknown cases
@@ -444,8 +434,8 @@ public class AdminViewExamination extends javax.swing.JFrame {
                 // Center align marks and grade columns
                 DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
                 centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-                tbl_showStudentResults.getColumnModel().getColumn(1).setCellRenderer(centerRenderer); // Marks column
-                tbl_showStudentResults.getColumnModel().getColumn(2).setCellRenderer(centerRenderer); // Grade column
+                tbl_showStudentResults.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
+                tbl_showStudentResults.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
 
                 tbl_showStudentResults.setVisible(true);
                 pnl_tableIn.setVisible(true);

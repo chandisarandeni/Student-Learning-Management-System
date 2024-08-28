@@ -4,28 +4,20 @@
  */
 package oop_cw.adminDashboard;
 
-/**
- *
- * @author Chandisa
- */
 import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.*;
 
 import oop_cw.Frames.*;
-import oop_cw.OOP_CW;
-import oop_cw.adminDashboard.*;
 
-/**
- *
+/*
  * @author Chandisa
  */
 public class AdminRemoveLecturer extends javax.swing.JFrame {
-    
+
     private DrawerController drawer;
 
     /**
@@ -33,22 +25,22 @@ public class AdminRemoveLecturer extends javax.swing.JFrame {
      */
     public AdminRemoveLecturer() {
         initComponents();
-        
+
         lbl_lecturerName.setVisible(false);
         lbl_lecturerID.setVisible(false);
         lbl_lecturerSubject.setVisible(false);
         lbl_lecturerDepartment.setVisible(false);
         lbl_lecturerEmail.setVisible(false);
-        
+
         lbl_showLecturerName.setVisible(false);
         lbl_showLecturerID.setVisible(false);
         lbl_showLecturerSubject.setVisible(false);
         lbl_showLecturerDepartment.setVisible(false);
         lbl_showLecturerEmail.setVisible(false);
-        
+
         btn_Remove.setVisible(false);
         btn_Cancel.setVisible(false);
-        
+
         drawer = Drawer.newDrawer(this)
                 .header(new Header())
                 .separator(2, new Color(173, 173, 173))
@@ -62,18 +54,17 @@ public class AdminRemoveLecturer extends javax.swing.JFrame {
                 .addFooter(createDrawerItem("Logout", "power 1.1.png"))
                 .build();
     }
-    
+
     private DrawerItem createDrawerItem(String title, String iconPath) {
-    DrawerItem item = new DrawerItem(title)
-            .icon(new ImageIcon(getClass().getResource(iconPath)))
-            .build();
+        DrawerItem item = new DrawerItem(title)
+                .icon(new ImageIcon(getClass().getResource(iconPath)))
+                .build();
 
-    // Add an action listener to handle item selection
-    item.addActionListener(e -> handleDrawerItemSelection(title));
+        // Add an action listener to handle item selection
+        item.addActionListener(e -> handleDrawerItemSelection(title));
 
-    return item;
-}
-
+        return item;
+    }
 
     private void handleDrawerItemSelection(String title) {
         switch (title) {
@@ -121,7 +112,6 @@ public class AdminRemoveLecturer extends javax.swing.JFrame {
                 home.setVisible(true);
                 this.setVisible(false);
                 // Handle logout
-                //handleLogout();
                 break;
             default:
                 // Handle unknown cases

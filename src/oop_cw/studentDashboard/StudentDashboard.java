@@ -8,7 +8,6 @@ import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,8 +18,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import oop_cw.Frames.*;
-import oop_cw.OOP_CW;
-import oop_cw.adminDashboard.*;
 
 /**
  * @author Chandisa
@@ -133,14 +130,13 @@ public class StudentDashboard extends javax.swing.JFrame {
                 // Show the Examination screen
                 StudentViewResults studentViewResults = new StudentViewResults();
                 studentViewResults.setVisible(true);
-                this.setVisible(false); // Hide the current frame
+                this.setVisible(false);
                 break;
             case "Logout":
                 Home home = new Home();
                 home.setVisible(true);
                 this.setVisible(false);
                 // Handle logout
-                //handleLogout();
                 break;
             default:
                 // Handle unknown cases
@@ -161,6 +157,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_UpcomingLectures = new javax.swing.JTable();
+        Banner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -204,6 +201,8 @@ public class StudentDashboard extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tbl_UpcomingLectures);
 
+        Banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oop_cw/studentDashboard/Banner.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,7 +212,9 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addComponent(HomeMenu)
                 .addContainerGap(831, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(109, 109, 109)
+                .addComponent(Banner, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -227,7 +228,9 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Banner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -282,6 +285,7 @@ public class StudentDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Banner;
     private javax.swing.JLabel HomeMenu;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane4;

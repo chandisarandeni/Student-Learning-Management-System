@@ -50,7 +50,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     //Implement the recenlt added student table data
     private void loadRecentStudentsData() {
-        
+
         //Connection String
         String connectionString = "jdbc:sqlserver://DESKTOP-3RD2OGB;Database=OOP_CW;integratedSecurity=true;TrustServerCertificate=true;";
 
@@ -103,7 +103,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     //Load upcoming lectures
     private void loadUpcomingLecturesData() {
-        
+
         //Connection String
         String connectionString = "jdbc:sqlserver://DESKTOP-3RD2OGB;Database=OOP_CW;integratedSecurity=true;TrustServerCertificate=true;";
 

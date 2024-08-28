@@ -4,7 +4,6 @@
  */
 package oop_cw.Frames;
 
-import oop_cw.Frames.*;
 import oop_cw.adminDashboard.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -204,7 +203,6 @@ public class AdminLogin extends javax.swing.JFrame {
 
     // Login btn for admin
     private void AdminLogin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminLogin2ActionPerformed
-        // TODO add your handling code here:
         // Database connection string
         String connectionString = "jdbc:sqlserver://DESKTOP-3RD2OGB;Database=OOP_CW;integratedSecurity=true;TrustServerCertificate=true;";
 
@@ -222,7 +220,7 @@ public class AdminLogin extends javax.swing.JFrame {
 
             // Set parameters
             stmt.setString(1, txt_adminUsername.getText());
-            stmt.setString(2, new String(txt_adminPassword.getText())); // Assuming txt_adminPassword is a JPasswordField
+            stmt.setString(2, new String(txt_adminPassword.getText()));
 
             // Execute query
             rs = stmt.executeQuery();
@@ -263,7 +261,7 @@ public class AdminLogin extends javax.swing.JFrame {
     private void AdminLogin3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminLogin3ActionPerformed
         Home home = new Home();
         home.setVisible(true);
-        this.hide();
+        this.setVisible(false);
     }//GEN-LAST:event_AdminLogin3ActionPerformed
 
     // Go back to choose login

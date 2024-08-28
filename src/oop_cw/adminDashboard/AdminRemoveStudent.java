@@ -97,20 +97,19 @@ public class AdminRemoveStudent extends javax.swing.JFrame {
                 // Show the Lecturer screen
                 AdminViewLecturer adminViewLecturer = new AdminViewLecturer();
                 adminViewLecturer.setVisible(true);
-                this.setVisible(false); // Hide the current frame
+                this.setVisible(false);
                 break;
             case "Examination":
                 // Show the Examination screen
                 AdminViewExamination adminViewExamination = new AdminViewExamination();
                 adminViewExamination.setVisible(true);
-                this.setVisible(false); // Hide the current frame
+                this.setVisible(false);
                 break;
             case "Logout":
                 Home home = new Home();
                 home.setVisible(true);
                 this.setVisible(false);
                 // Handle logout
-                //handleLogout();
                 break;
             default:
                 // Handle unknown cases

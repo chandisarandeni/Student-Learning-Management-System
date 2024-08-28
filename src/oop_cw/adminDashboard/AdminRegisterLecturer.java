@@ -4,39 +4,29 @@
  */
 package oop_cw.adminDashboard;
 
-/**
- *
- * @author Chandisa
- */
 import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.*;
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import oop_cw.Frames.*;
-import oop_cw.OOP_CW;
-import oop_cw.adminDashboard.*;
 
-/**
+/*
  * @author Chandisa
  */
 public class AdminRegisterLecturer extends javax.swing.JFrame {
-    
+
     private DrawerController drawer;
 
     public AdminRegisterLecturer() {
         initComponents();
-        
+
         drawer = Drawer.newDrawer(this)
                 .header(new Header())
                 .separator(2, new Color(173, 173, 173))
@@ -50,17 +40,17 @@ public class AdminRegisterLecturer extends javax.swing.JFrame {
                 .addFooter(createDrawerItem("Logout", "power 1.1.png"))
                 .build();
     }
-    
+
     private DrawerItem createDrawerItem(String title, String iconPath) {
-    DrawerItem item = new DrawerItem(title)
-            .icon(new ImageIcon(getClass().getResource(iconPath)))
-            .build();
+        DrawerItem item = new DrawerItem(title)
+                .icon(new ImageIcon(getClass().getResource(iconPath)))
+                .build();
 
-    // Add an action listener to handle item selection
-    item.addActionListener(e -> handleDrawerItemSelection(title));
+        // Add an action listener to handle item selection
+        item.addActionListener(e -> handleDrawerItemSelection(title));
 
-    return item;
-}
+        return item;
+    }
 
     private void handleDrawerItemSelection(String title) {
         switch (title) {
@@ -94,13 +84,13 @@ public class AdminRegisterLecturer extends javax.swing.JFrame {
                 // Show the Lecturer screen
                 AdminViewLecturer adminViewLecturer = new AdminViewLecturer();
                 adminViewLecturer.setVisible(true);
-                this.setVisible(false); // Hide the current frame
+                this.setVisible(false);
                 break;
             case "Examination":
                 // Show the Examination screen
                 AdminViewExamination adminViewExamination = new AdminViewExamination();
                 adminViewExamination.setVisible(true);
-                this.setVisible(false); // Hide the current frame
+                this.setVisible(false);
                 break;
             case "Logout":
                 //Logout from the system
@@ -374,12 +364,12 @@ public class AdminRegisterLecturer extends javax.swing.JFrame {
         String lecturerPassword = new String(txt_lecturerPassword.getText()).trim();
         String lecturerConfirmPassword = new String(txt_lecturerConfirmPassword.getText()).trim();
         String secretPin = txt_lecturerSecretPin.getText().trim();
-        
+
         // Validate fields
-        if (lecturerID.isEmpty() || lecturerName.isEmpty() || lecturerSubject.isEmpty() ||
-            department.isEmpty() || lecturerEmail.isEmpty() || lecturerPassword.isEmpty() ||
-            lecturerConfirmPassword.isEmpty() || secretPin.isEmpty()) {
-            
+        if (lecturerID.isEmpty() || lecturerName.isEmpty() || lecturerSubject.isEmpty()
+                || department.isEmpty() || lecturerEmail.isEmpty() || lecturerPassword.isEmpty()
+                || lecturerConfirmPassword.isEmpty() || secretPin.isEmpty()) {
+
             JOptionPane.showMessageDialog(this, "Please fill all the fields.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -394,7 +384,7 @@ public class AdminRegisterLecturer extends javax.swing.JFrame {
         try {
             // Establish connection
             Connection conn = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-3RD2OGB;Database=OOP_CW;integratedSecurity=true;TrustServerCertificate=true;");
-            
+
             // Create SQL query
             String sql = "INSERT INTO Lecturer (lecturerID, lecturerName, lecturerSubject, department, lecturerEmail, lecturePassword, secretPin) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -418,7 +408,7 @@ public class AdminRegisterLecturer extends javax.swing.JFrame {
 
             // Optionally clear fields after registration
             clearFields();
-            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error registering lecturer: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
