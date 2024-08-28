@@ -23,7 +23,6 @@ import oop_cw.OOP_CW;
 import oop_cw.adminDashboard.*;
 
 /**
- *
  * @author Chandisa
  */
 public class StudentDashboard extends javax.swing.JFrame {
