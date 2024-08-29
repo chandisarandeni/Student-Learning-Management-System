@@ -118,6 +118,11 @@ public class LecturerLogin extends javax.swing.JFrame {
         txt_lecturerPassword.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         adminForgot.setText("Click Here");
+        adminForgot.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminForgotMouseClicked(evt);
+            }
+        });
 
         adminBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oop_cw/Images/Lecturer Login.png"))); // NOI18N
 
@@ -275,6 +280,13 @@ public class LecturerLogin extends javax.swing.JFrame {
         home.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_AdminLogin3ActionPerformed
+
+    private void adminForgotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminForgotMouseClicked
+        // TODO add your handling code here:
+        LecturerForgotPassword lecturerForgotPassword = new LecturerForgotPassword();
+        lecturerForgotPassword.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_adminForgotMouseClicked
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

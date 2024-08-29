@@ -105,6 +105,11 @@ public class AdminLogin extends javax.swing.JFrame {
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         adminForgot.setText("Click Here");
+        adminForgot.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminForgotMouseClicked(evt);
+            }
+        });
 
         AdminLogin4.setBackground(new java.awt.Color(102, 0, 153));
         AdminLogin4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -270,6 +275,13 @@ public class AdminLogin extends javax.swing.JFrame {
         home.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_AdminLogin4ActionPerformed
+
+    private void adminForgotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminForgotMouseClicked
+        // TODO add your handling code here:
+        AdminForgotPassword adminForgotPassword = new AdminForgotPassword();
+        adminForgotPassword.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_adminForgotMouseClicked
 
     /**
      * @param args the command line arguments

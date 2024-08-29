@@ -5,6 +5,30 @@
 package oop_cw;
 import oop_cw.Frames.*;
 
+/*
+    #Studnet Results Management System
+    
+    + Admin
+	- Login using valid username and password
+	- Register students
+	- Register Lectrurers
+	- Search student
+	- Search lecturer
+	- Delete student
+	- Delete lecturer
+	- View student results
+
+    + Lecturer
+	- View upcoming lectures
+	- View recently added studnets
+	- Upload results
+
+    + Student
+	- View upcoming lectures
+	- View Results
+
+*/
+
 /**
  * @author Chandisa
  */

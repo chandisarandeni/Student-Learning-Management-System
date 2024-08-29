@@ -116,6 +116,11 @@ public class StudentLogin extends javax.swing.JFrame {
         txt_studentPassword.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         adminForgot.setText("Click Here");
+        adminForgot.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminForgotMouseClicked(evt);
+            }
+        });
 
         adminBanner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oop_cw/Images/Student Login.png"))); // NOI18N
 
@@ -128,7 +133,7 @@ public class StudentLogin extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
@@ -273,6 +278,13 @@ public class StudentLogin extends javax.swing.JFrame {
         home.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_AdminLogin3ActionPerformed
+
+    private void adminForgotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminForgotMouseClicked
+        // TODO add your handling code here:
+        StudentForgotPassword studentForgotPassword = new StudentForgotPassword();
+        studentForgotPassword.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_adminForgotMouseClicked
 
     /**
      * @param args the command line arguments
