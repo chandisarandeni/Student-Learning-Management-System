@@ -311,10 +311,8 @@ public class AdminLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdminLogin().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new AdminLogin().setVisible(true);
         });
     }
 
