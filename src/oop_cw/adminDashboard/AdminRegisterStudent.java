@@ -25,6 +25,7 @@ public class AdminRegisterStudent extends javax.swing.JFrame {
     private DrawerController drawer;
 
     public AdminRegisterStudent() {
+
         initComponents();
 
         drawer = Drawer.newDrawer(this)

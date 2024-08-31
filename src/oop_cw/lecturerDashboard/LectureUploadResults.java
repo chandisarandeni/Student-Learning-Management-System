@@ -17,7 +17,6 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 import oop_cw.Frames.*;
-import oop_cw.adminDashboard.*;
 
 /*
  * @author Chandisa
@@ -411,8 +410,8 @@ public class LectureUploadResults extends javax.swing.JFrame {
 
                         if (result > 0) {
                             JOptionPane.showMessageDialog(this, "Student result updated successfully!");
-                            AdminViewStudent adminViewStudent = new AdminViewStudent();
-                            adminViewStudent.setVisible(true);
+                            LectureUploadResults lecturerUploadResults = new LectureUploadResults();
+                            lecturerUploadResults.setVisible(true);
                             this.setVisible(false);
                         } else {
                             JOptionPane.showMessageDialog(this, "Registration failed. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);

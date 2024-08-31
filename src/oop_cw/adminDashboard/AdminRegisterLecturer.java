@@ -23,7 +23,7 @@ import oop_cw.Frames.*;
 public class AdminRegisterLecturer extends javax.swing.JFrame {
 
     private DrawerController drawer;
-
+   
     public AdminRegisterLecturer() {
         initComponents();
 
