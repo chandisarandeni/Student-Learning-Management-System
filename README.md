@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-The **Student Learning Management System (SLMS)** is a comprehensive platform designed to manage student and lecturer information, including registration, course management, and grading. The system is built using **Java** and integrated with a **SQL Server** database.
+The **Student Learning Management System (SLMS)** is a comprehensive platform designed to manage student and lecturer information, including registration, course management, and grading. The system is built using **Java**, integrated with a **SQL Server** database, and created using **Ant Build** for project management and automation.
 
 ## Features
 
@@ -29,7 +29,15 @@ The **Student Learning Management System (SLMS)** is a comprehensive platform de
 4. **Admin Dashboard**
    - Admins can view and manage student data, including recent students from the `tbl_RecentStudents` table.
 
-## Database Setup
+## Project Setup
+
+### Prerequisites
+
+- **Java Development Kit (JDK)**
+- **SQL Server** and **SQL Server Management Studio (SSMS)**
+- **Apache Ant** (used for building the project)
+
+### Database Setup
 
 Before running the project, ensure that the necessary tables are created in the SQL Server database. Follow these steps:
 
@@ -92,3 +100,20 @@ CREATE TABLE Result(
   marks    REAL,
   grade    CHAR(2)
 );
+
+```
+##
+
+### Running the Project
+
+1. Make sure **Apache Ant** is installed on your machine.
+    
+2. Navigate to the project directory and build the project using the following command:
+    
+    ```bash
+    ant build
+    ```
+
+3. Once the build is successful, deploy and run the application.
+
+##
