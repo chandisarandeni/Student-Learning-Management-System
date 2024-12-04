@@ -1,5 +1,10 @@
 # Student Learning Management System (SLMS)
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f81c42b2-ec6a-43b0-99d1-b4d7a8b7f74c" width="400">
+  <img src="https://github.com/user-attachments/assets/ae99d703-c611-43a6-bf22-947fb8baec23" width="400">
+</p>
+
 ## Project Overview
 
 The **Student Learning Management System (SLMS)** is a comprehensive platform designed to manage student and lecturer information, including registration, course management, and grading. The system is built using **Java**, integrated with a **SQL Server** database, and created using **Ant Build** for project management and automation.
@@ -43,6 +48,8 @@ Before running the project, ensure that the necessary tables are created in the 
 
 1. Open **SQL Server Management Studio (SSMS)**.
 2. Run the provided table creation queries to set up the database and tables required for the system.
+
+### Change Connection String
 
 ### Table Creation Queries
 
